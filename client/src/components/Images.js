@@ -15,14 +15,15 @@ export class Images extends Component {
     axios
         .get(`/api/photos?count=${count}&start=${start}`)
         .then(res => this.setState({ images: res.data }));
+    this.setState({ start: start + count });
   }
 
   fetchImages = () => {
-    const { count, start } = this.state;
-    this.setState({ start: this.state.start + count });
+    const { count, start, images } = this.state;
     axios
-        .get(`/api/photos?count=${count}&start=${start}`)
-        .then(res => this.setState({ images: this.state.images.concat(res.data) }));
+      .get(`/api/photos?count=${count}&start=${start}`)
+      .then(res => this.setState({ images: images.concat(res.data) }));
+    this.setState({ start: start + count });
   }
 
   render() {
