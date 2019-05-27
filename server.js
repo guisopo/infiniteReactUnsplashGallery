@@ -5,14 +5,14 @@ const toJson = require('unsplash-js').toJson;
 const express = require('express');
 
 const unsplash = new Unsplash({
-  applicatonId: config.get('APPLICATION_ID'),
+  applicationId: config.get('APPLICATION_ID'),
   secret: config.get('SECRET'),
   callbackUrl: config.get('CALLBACK_URL')
 });
 
 const app = express();
 
-app.get('/api/photos', (req, resp) => {
+app.get('/api/photos', (req, res) => {
   unsplash.photos
     .listPhotos(req.query.start, req.query.count)
     .then(toJson)
