@@ -1,4 +1,5 @@
 import React from 'react';
+import Images from './components/Images';
 import './App.css';
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
                 <h1 className='title is-1'>
                   Infinite Scroll by Unsplash
                 </h1>
+                <Images />
               </div>
             </div>
           </div>
