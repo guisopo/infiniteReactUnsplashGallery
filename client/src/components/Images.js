@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import InfinteScroll from 'react-infinite-scroll-component';
+import InfiniteScroll from 'react-infinite-scroll-component';
 
 export class Images extends Component {
   state = {
@@ -12,13 +12,14 @@ export class Images extends Component {
   componentDidMount() {
     const { count, start } = this.state;
     axios
-        .get(`/api/photos/count=${count}&start=${start}`)
-        .then(res => this.setState({ images: res.data}));
+        .get(`/api/photos?count=${count}&start=${start}`)
+        .then(res => this.setState({ images: res.data }));
   }
 
   render() {
+    console.log(this.state);
     return(
-      <div></div>
+      <div>Hello</div>
     )
   }
 }
