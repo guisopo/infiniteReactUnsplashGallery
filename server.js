@@ -11,3 +11,13 @@ const unsplash = new Unsplash({
 });
 
 const app = express();
+
+app.get('/api/photos', (req, resp) => {
+  unsplash.photos.listPhotos(1, 30)
+    .then(toJson)
+    .then(json => res.json(json));
+});
+
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () => console.log(`server started on ${PORT}`));
